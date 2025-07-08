@@ -1,42 +1,102 @@
-# Proof of Stake (PoS) Node Trustworthiness EDA
+# DAO Whale Distribution Analysis
 
-## Dataset
-- 📁 Source: [Kaggle - Proof of Stake Blockchain Dataset](https://www.kaggle.com/datasets/a9910rut/proofofstake-blockchain-dataset?utm_source=chatgpt.com&select=Blockchain101.csv)
-- 🎯 Target: `Node Label` (0 = Untrustworthy, 1 = Trustworthy)
+This project investigates the distribution of governance tokens in a DAO ecosystem, focusing on how much of the total supply is controlled by whale wallets.
 
-## Project Structure
-project-root/
-├── data/ # Raw dataset (CSV)
-├── images/ # Exported plots
-│ ├── coin_stake_distribution.png
-│ ├── coinstake_node_comparison.png
-│ ├── txnsize_distribution_analysis.png
-│ ├── txnfee_node_distribution.png
-│ ├── eda_has_txnfee_distribution.png
-│ └── blockscore_node_label.png
-├── notebook/ # Jupyter notebook files
-├── requirements.txt # Python library dependencies
-└── README.md # Project summary (this file)
+---
 
-## Purpose
-To explore node behavior in a PoS blockchain and identify trustworthiness patterns based on staking, transaction, and block metrics.
+## 📦 Dataset
 
-## Process Summary
-- Clipped outliers (1%–99%) on numerical features
-- Visual EDA on `Coin Stake`, `Txnsize`, `TxnFee`, `Block Score`, etc.
-- Labeled and compared trustworthy vs. untrustworthy nodes
-- Visualizations stored in `/images/`
+- **Source**: Internally compiled DAO token distribution data
+- **Format**: CSV
+- **Fields**:
+  - `wallet_address`: Public address of the holder
+  - `token_amount`: Number of DAO tokens held
+  - `percentage_of_total`: Share of total supply
+  - `group`: Categorized as Whale / Dolphin / Shrimp
 
-## Tools Used
-- Python, Pandas, Matplotlib, Seaborn
+---
+
+## 🎯 Objective
+
+To analyze the level of decentralization in DAO governance by examining token concentration and identifying the dominance of whale wallets.
+
+---
+
+## 📁 Directory Structure
+
+```text
+dao_whale/
+├── data/                         # Raw CSV file with DAO token data
+├── images/                       # Visual outputs
+│   ├── non_whale_balance.png
+│   ├── top5_dao_whale_count.png
+│   ├── unique_users_per_dao.png
+│   └── whale_ratio_distribution.png
+├── notebook/
+│   └── dao_whalep.ipynb          # Main analysis notebook
+├── requirements.txt              # Python dependencies
+└── README.md                     # Project documentation
+```
+
+---
+
+## 🔍 Methodology
+
+- Loaded and validated DAO token holding dataset
+- Calculated percentage ownership per wallet
+- Grouped holders into categories:
+  - Whale: >5%
+  - Dolphin: 1–5%
+  - Shrimp: <1%
+- Visualized distribution across DAOs:
+  - Whale dominance
+  - Address count
+  - Non-whale balances
+  - Whale ratio density
+
+---
+
+## 📊 Key Insights
+
+- DAO token ownership is highly concentrated in whales
+- Some DAOs have >90% of their tokens held by <5 wallets
+- Non-whale balances often remain insignificant in governance control
+- Very few DAOs have truly decentralized token distribution
+
+---
+
+## 🖼️ Visual Outputs (Saved in `/images/`)
+
+- `non_whale_balance.png` → Total token share of non-whale addresses
+- `top5_dao_whale_count.png` → Number of whale wallets in top 5 DAOs
+- `unique_users_per_dao.png` → Active token holders per DAO
+- `whale_ratio_distribution.png` → Whale ratio distribution histogram (DAO-wise)
+
+---
+
+## 🧰 Tools Used
+
+- Python 3.9
+- Pandas, NumPy
+- Matplotlib, Seaborn
 - Jupyter Notebook
 
-## Key Findings
-- High `Coin Stake` and `Block Score` correlate with trustworthy nodes
-- Untrustworthy nodes dominate transactions with no fee
-- Most small transactions come from lower trust nodes
+---
 
-## How to Run
-1. Clone this repo
-2. Run: `pip install -r requirements.txt`
-3. Open notebook in `/notebook/` and execute cells
+## 🚀 How to Run
+
+1. Clone this repository
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Open and run `notebook/dao_whalep.ipynb` in Jupyter
+
+---
+
+## 👤 Author
+
+**Hakan Ataş**  
+Data Scientist | Crypto Analyst | Blockchain Researcher
+
+This project aims to measure and visualize governance centralization risks in DAO ecosystems through whale distribution analysis.
